@@ -4,7 +4,8 @@ Plot of data from the [UW-Madison COVID
 dashboard](https://covidresponse.wisc.edu/dashboard/) from Fall, 2021.
 
 Here, just calculating and plotting the test positivity;
-the source is in [`README.Rmd`](README.Rmd).
+the curves are 7-day running averages.
+The source is in [`README.Rmd`](README.Rmd).
 
 
 
