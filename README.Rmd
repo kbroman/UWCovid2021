@@ -1,0 +1,31 @@
+## UW-Madison COVID data, Fall 2021
+
+Plot of data from the [UW-Madison COVID
+dashboard](https://covidresponse.wisc.edu/dashboard/) from Fall, 2021.
+
+Here, just calculating and plotting the test positivity.
+
+```{r options, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE)
+```
+
+
+```{r load_data_and_calculate}
+x <- read.csv("uw_covid_2021.csv")
+
+tot <- rowSums(x[,2:3])
+pos <- rowSums(x[,4:5])
+x <- cbind(x, Total=tot, Positive=pos)
+x <- cbind(x,
+           percent_employees = x[,4]/x[,2]*100,
+           percent_students = x[,5]/x[,3]*100,
+           percent_overall = x[,7]/x[,6]*100)
+
+x <- cbind(x,
+           week_employees=NA,
+           week_students=NA,
+           week_overall=NA)
+for(i in 7:nrow(x)) {
+    x[i,ncol(x)+(-2:0)] <- colSums(x[i+(-6:0),c(4,5,7)])/colSums(x[i+(-6:0),c(2,3,6)])*100
+}
+```
