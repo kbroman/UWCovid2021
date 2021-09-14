@@ -35,8 +35,8 @@ for(i in 1:nrow(x)) {
 ```
 
 ```{r bar_plots}
-light_color <- c(blue="#B3C7E5", green="#A8DC93", red="#F78FA7")
-dark_color <- c(blue="#0855B3", green="#0D8308", red="#C5050C")
+light_color <- c(green="#A8DC93", blue="#B3C7E5", red="#F78FA7")
+dark_color <- c(green="#0D8308", blue="#0855B3", red="#C5050C")
 
 cols <- c(8,9,10)
 ave_cols <- c(11,12,13)
@@ -44,7 +44,7 @@ mx <- max(x[,c(cols, ave_cols)], na.rm=TRUE)
 lab <- c("Employees", "Students", "Overall")
 
 par(mfrow=c(3,1), cex=1.3)
-for(i in c(3,1,2)) {
+for(i in 3:1) {
     z <- barplot(x[, cols[i]], col=light_color[i], main=lab[i],
                  las=1, ylim=c(0, mx), space=0.02,
                  ylab="Percent Positive")
