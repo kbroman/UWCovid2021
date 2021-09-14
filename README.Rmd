@@ -35,7 +35,7 @@ for(i in 1:nrow(x)) {
 }
 ```
 
-```{r bar_plots}
+```{r bar_plots, dev="svg"}
 light_color <- c(green="#A8DC93", blue="#B3C7E5", red="#F78FA7")
 dark_color <- c(green="#0D8308", blue="#0855B3", red="#C5050C")
 
