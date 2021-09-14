@@ -3,10 +3,12 @@
 Plot of data from the [UW-Madison COVID
 dashboard](https://covidresponse.wisc.edu/dashboard/) from Fall, 2021.
 
-Here, just calculating and plotting the test positivity.
+Here, just calculating and plotting the test positivity;
+the source is in [`README.Rmd`](README.Rmd).
 
 ```{r options, include=FALSE}
-knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE)
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE,
+                      fig.path="", fig.width=11, fig.height=14)
 ```
 
 
@@ -25,7 +27,34 @@ x <- cbind(x,
            week_employees=NA,
            week_students=NA,
            week_overall=NA)
-for(i in 7:nrow(x)) {
-    x[i,ncol(x)+(-2:0)] <- colSums(x[i+(-6:0),c(4,5,7)])/colSums(x[i+(-6:0),c(2,3,6)])*100
+for(i in 1:nrow(x)) {
+    val <- i+(-6:0)
+    val <- val[val >= 1]
+    x[i,ncol(x)+(-2:0)] <- colSums(x[val,c(4,5,7)])/colSums(x[val,c(2,3,6)])*100
+}
+```
+
+```{r bar_plots}
+light_color <- c(blue="#B3C7E5", green="#A8DC93", red="#F78FA7")
+dark_color <- c(blue="#0855B3", green="#0D8308", red="#C5050C")
+
+cols <- c(8,9,10)
+ave_cols <- c(11,12,13)
+mx <- max(x[,c(cols, ave_cols)], na.rm=TRUE)
+lab <- c("Employees", "Students", "Overall")
+
+par(mfrow=c(3,1), cex=1.3)
+for(i in c(3,1,2)) {
+    z <- barplot(x[, cols[i]], col=light_color[i], main=lab[i],
+                 las=1, ylim=c(0, mx), space=0.02,
+                 ylab="Percent Positive")
+    abline(h=pretty(c(0,mx)), lty=2, col="gray60")
+
+    u <- par("usr")
+    v <- z[,1]
+    vv <- v + diff(v[1:2])*0.2
+    text(vv, u[3] - diff(u[3:4])*0.03, x[,1], adj=c(1, 0.5), srt=45, xpd=TRUE)
+
+    lines(v, x[,ave_cols[i]], col=dark_color[i], lwd=2)
 }
 ```
