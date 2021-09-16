@@ -45,17 +45,21 @@ ave_cols <- c(11,12,13)
 mx <- max(x[,c(cols, ave_cols)], na.rm=TRUE)
 lab <- c("Employees", "Students", "Overall")
 
+test_date <- as.Date(x[,1])
+monfri <- (lubridate::wday(test_date) %in% c(2, 6))
+
 par(mfrow=c(3,1), cex=1.3)
 for(i in 3:1) {
     z <- barplot(x[, cols[i]], col=light_color[i], main=lab[i],
                  las=1, ylim=c(0, mx), space=0.02,
-                 ylab="Percent Positive")
+                 ylab="Percent Positive", xaxs="i")
     abline(h=pretty(c(0,mx)), lty=2, col="gray60")
 
     u <- par("usr")
     v <- z[,1]
-    vv <- v + diff(v[1:2])*0.2
-    text(vv, u[3] - diff(u[3:4])*0.03, x[,1], adj=c(1, 0.5), srt=45, xpd=TRUE)
+    vv <- v + diff(v[1:2])*0.3
+    segments(v[monfri], u[3], v[monfri], u[3]-diff(u[3:4])*0.04, xpd=TRUE)
+    text(vv[monfri], u[3] - diff(u[3:4])*0.08, x[monfri,1], adj=c(1, 0.5), srt=45, xpd=TRUE)
 
     lines(v, x[,ave_cols[i]], col=dark_color[i], lwd=2)
 }
