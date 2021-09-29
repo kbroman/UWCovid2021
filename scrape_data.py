@@ -26,9 +26,30 @@ def extract_numbers(s):
     employees = extract_regex(r"Employees: (\d+) ", s)
     return students + employees
 
+def pad_with_zero(val):
+    val = int(val)
+    if val < 10:
+        return "0" + str(val)
+    else:
+        return str(val)
+
+def reform_date(s):
+    m = re.search("^([A-Za-z]+) (\d+)$", s)
+    months = ["January", "February", "March", "April", "May", "June",
+              "July", "August", "September", "October", "November", "December"]
+
+    if m:
+        g = m.groups()
+        month = pad_with_zero(months.index(g[0])+1)
+        day = pad_with_zero(g[1])
+        return("2021-" + month + "-" + day)
+    else:
+        return["NA"]
+
 def extract_data(chart):
     # grab date (like "August 7")
     dates = chart.xpath('//g/@data-tooltip_label')
+    dates = [reform_date(x) for x in dates]
     dates_data = pd.DataFrame(dates)
     dates_data.columns = ['date']
 
@@ -44,8 +65,10 @@ tests_chart = r.html.find('#chart-covid-tests', first=True)
 positive = extract_data(positive_chart)
 tests = extract_data(tests_chart)
 
-positive.columns = ['date', 'pos_students', 'pos_employees']
-tests.columns = ['date', 'tot_students', 'tot_employees']
+positive.columns = ['Date', 'Positive_students', 'Positive_employees']
+tests.columns = ['date', 'Total_students', 'Total_employees']
+tests = tests[['Total_students', 'Total_employees']]
 
 data = pd.concat([positive, tests], axis=1)
-print(data)
+data = data[["Date","Total_employees","Total_students","Positive_employees","Positive_students"]]
+data.to_csv('uw_covid_2021.csv', index=False)
