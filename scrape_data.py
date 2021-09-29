@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# from https://gist.github.com/dgfitch/b6ca1cc61b4795e698cefdf672a90f23
+# from Dan Fitch, https://gist.github.com/dgfitch/b6ca1cc61b4795e698cefdf672a90f23
 
 import re
 import requests
