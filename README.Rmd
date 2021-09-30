@@ -28,11 +28,22 @@ x <- cbind(x,
 x <- cbind(x,
            week_employees=NA,
            week_students=NA,
-           week_overall=NA)
+           week_overall=NA,
+           lo_employees=NA,
+           lo_students=NA,
+           lo_overall=NA,
+           hi_employees=NA,
+           hi_students=NA,
+           hi_overall=NA)
 for(i in 1:nrow(x)) {
     val <- i+(-6:0)
     val <- val[val >= 1]
-    x[i,ncol(x)+(-2:0)] <- colSums(x[val,c(4,5,7)])/colSums(x[val,c(2,3,6)])*100
+    pos <- colSums(x[val,c(4,5,7)])
+    tot <- colSums(x[val,c(2,3,6)])
+    x[i,ncol(x)+(-8:-6)] <- pos/tot*100
+    ci <- lapply(1:3, function(i) {if(!is.na(tot[i]) && tot[i] > 0) return(binom.test(pos[i], tot[i])$conf.int*100) else return(c(NA,NA))})
+    x[i,ncol(x)+(-5:-3)] <- sapply(ci, "[", 1)
+    x[i,ncol(x)+(-2:0)] <- sapply(ci, "[", 2)
 }
 ```
 
@@ -62,5 +73,6 @@ for(i in 3:1) {
     text(vv[monfri], u[3] - diff(u[3:4])*0.08, x[monfri,1], adj=c(1, 0.5), srt=45, xpd=TRUE)
 
     lines(v, x[,ave_cols[i]], col=dark_color[i], lwd=2)
+
 }
 ```
