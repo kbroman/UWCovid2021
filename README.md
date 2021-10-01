@@ -2,8 +2,9 @@
 
 Plot of data from the [UW-Madison COVID
 dashboard](https://covidresponse.wisc.edu/dashboard/) from Fall, 2021,
-scraped into [`uw_covid_2021.csv`](uw_covid_2021.csv) using a python
-script based on the
+scraped into [`uw_covid_2021.csv`](uw_covid_2021.csv) using a
+[python script](https://github.com/kbroman/UWCovid2021/blob/master/scrape_data.py)
+based on the
 [gist](https://gist.github.com/dgfitch/b6ca1cc61b4795e698cefdf672a90f23)
 from [Dan Fitch](https://github.com/dgfitch).
 
