@@ -47,6 +47,15 @@ for(i in 1:nrow(x)) {
 }
 ```
 
+```{r ci_envelope}
+ci_envelope <-
+    function(x, lo, hi, ...)
+{
+
+}
+```
+
+
 ```{r bar_plots, dev="svg"}
 light_color <- c(green="#A8DC93", blue="#B3C7E5", red="#F78FA7")
 dark_color <- c(green="#0D8308", blue="#0855B3", red="#C5050C")
@@ -74,5 +83,7 @@ for(i in 3:1) {
 
     lines(v, x[,ave_cols[i]], col=dark_color[i], lwd=2)
 
+    polygon(c(v,rev(v)), c(x[,ave_cols[i]+3], rev(x[,ave_cols[i]+6])),
+            col=paste0(light_color[i], "40"), border=NA, xpd=TRUE)
 }
 ```
