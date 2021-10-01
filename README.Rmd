@@ -6,6 +6,8 @@ manually entered in [`uw_covid_2021.csv`](uw_covid_2021.csv).
 
 Here, just calculating and plotting the test positivity;
 the curves are 7-day running averages.
+The shaded regions are pointwise 95% confidence intervals on the 7-day
+running averages.
 The source is in [`README.Rmd`](README.Rmd).
 
 ```{r options, include=FALSE}
