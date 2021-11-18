@@ -86,7 +86,7 @@ for(i in 3:1) {
     v <- z[,1]
     vv <- v + diff(v[1:2])*0.3
     segments(v[monfri], u[3], v[monfri], u[3]-diff(u[3:4])*0.04, xpd=TRUE)
-    text(vv[monfri], u[3] - diff(u[3:4])*0.08, x[monfri,1], adj=c(1, 0.5), srt=45, xpd=TRUE)
+    text(vv[monfri], u[3] - diff(u[3:4])*0.08, x[monfri,1], adj=c(1, 0.5), srt=45, xpd=TRUE, cex=0.8)
 
     lines(v, x[,ave_cols[i]], col=dark_color[i], lwd=2)
 
