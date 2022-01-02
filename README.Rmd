@@ -1,7 +1,7 @@
-## UW-Madison COVID data, Fall 2021
+## UW-Madison COVID data, 2021-2022
 
 Plot of data from the [UW-Madison COVID
-dashboard](https://covidresponse.wisc.edu/dashboard/) from Fall, 2021,
+dashboard](https://covidresponse.wisc.edu/dashboard/) from academic year 2021-2022,
 scraped into [`uw_covid_2021.csv`](uw_covid_2021.csv) using a
 [python script](https://github.com/kbroman/UWCovid2021/blob/master/scrape_data.py)
 based on the
