@@ -25,4 +25,8 @@ The source is in [`README.Rmd`](https://github.com/kbroman/UWCovid2021/blob/mast
 
 
 
+```
+## [1] 153   3
+```
+
 ![plot of chunk bar_plots](bar_plots-1.svg)
