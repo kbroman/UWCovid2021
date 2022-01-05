@@ -73,7 +73,6 @@ mon <- (lubridate::wday(test_date) == 2)
 
 year2021 <- (lubridate::year(test_date) == 2021)
 year2022 <- (lubridate::year(test_date) == 2022)
-print(c(sum(year2021), sum(year2022)))
 
 par(mfrow=c(3,1), cex=1.3)
 for(i in 3:1) {
