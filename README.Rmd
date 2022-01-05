@@ -64,8 +64,10 @@ dark_color <- c(green="#0D8308", blue="#0855B3", red="#C5050C")
 
 cols <- c(8,9,10)
 ave_cols <- c(11,12,13)
-mx <- max(x[,c(cols, ave_cols)], na.rm=TRUE)
-mx <- min(c(mx, 16))
+tmpx <- unlist(x[,c(cols, ave_cols)])
+tmpx <- tmpx[tmpx < 100]
+mx <- max(tmpx, na.rm=TRUE)
+#mx <- min(c(mx, 16))
 lab <- c("Employees", "Students", "Overall")
 
 test_date <- as.Date(x[,1])
