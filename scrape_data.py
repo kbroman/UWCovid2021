@@ -41,8 +41,12 @@ def reform_date(s):
     if m:
         g = m.groups()
         month = pad_with_zero(months.index(g[0])+1)
+        if int(month) < 8:
+            year = '2022'
+        else:
+            year = '2021'
         day = pad_with_zero(g[1])
-        return("2021-" + month + "-" + day)
+        return(year + "-" + month + "-" + day)
     else:
         return["NA"]
 
