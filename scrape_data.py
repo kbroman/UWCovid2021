@@ -75,4 +75,4 @@ tests = tests[['Total_students', 'Total_employees']]
 
 data = pd.concat([positive, tests], axis=1)
 data = data[["Date","Total_employees","Total_students","Positive_employees","Positive_students"]]
-data.to_csv('uw_covid_2021.csv', index=False)
+data.to_csv('uw_covid_2022.csv', index=False)

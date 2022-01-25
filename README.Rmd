@@ -24,7 +24,8 @@ knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE,
 
 
 ```{r load_data_and_calculate}
-x <- read.csv("uw_covid_2021.csv")
+x <- rbind(read.csv("uw_covid_2021.csv"),
+           read.csv("uw_covid_2022.csv"))
 
 tot <- rowSums(x[,2:3])
 pos <- rowSums(x[,4:5])
