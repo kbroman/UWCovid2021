@@ -3,7 +3,7 @@
 Plot of data from the [UW-Madison COVID
 dashboard](https://covidresponse.wisc.edu/dashboard/) from academic year 2021-2022,
 scraped into [`uw_covid_2021.csv`](uw_covid_2021.csv) using a
-[python script](https://github.com/kbroman/UWCovid2021/blob/master/scrape_data.py)
+[python script](https://github.com/kbroman/UWCovid2021/blob/main/scrape_data.py)
 based on the
 [gist](https://gist.github.com/dgfitch/b6ca1cc61b4795e698cefdf672a90f23)
 from [Dan Fitch](https://github.com/dgfitch).
@@ -15,7 +15,7 @@ Here, just calculating and plotting the test positivity;
 the curves are 7-day running averages.
 The shaded regions are pointwise 95% confidence intervals on the 7-day
 running averages.
-The source is in [`README.Rmd`](https://github.com/kbroman/UWCovid2021/blob/master/README.Rmd).
+The source is in [`README.Rmd`](https://github.com/kbroman/UWCovid2021/blob/main/README.Rmd).
 
 
 
