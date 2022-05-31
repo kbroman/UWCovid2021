@@ -68,7 +68,7 @@ ave_cols <- c(11,12,13)
 tmpx <- unlist(x[,c(cols, ave_cols)])
 tmpx <- tmpx[tmpx < 80]
 mx <- max(tmpx, na.rm=TRUE)
-#mx <- min(c(mx, 16))
+mx <- min(c(mx, 25))
 lab <- c("Employees", "Students", "Overall")
 
 test_date <- as.Date(x[,1])
